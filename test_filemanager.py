@@ -1,6 +1,5 @@
 # тесты для консольного файлового менеджера (чистые и грязные)
 
-import random
 from change_pa import *
 from oss import*
 import os
