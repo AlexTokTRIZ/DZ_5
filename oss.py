@@ -38,19 +38,37 @@ def copy_pa(): # "copy_pa", "копировать (файл/папку)"))
         print('Такая папка не существует')
 
 def look_pap():
+    my_dirs=[]
     for i in os.listdir(os.getcwd()):
             if os.path.isdir(os.path.join(os.getcwd(),i)):
-                print(os.path.join(i))
-
+                my_dirs.append(os.path.join(i))
+    return my_dirs
 def look_files(): # "look_files","посмотреть только файлы"))
+    my_files=[]
     for i in os.listdir(os.getcwd()):
             if not os.path.isdir(os.path.join(os.getcwd(),i)):
-                print(os.path.join(i))
-
+                my_files.append(os.path.join(i))
+    return my_files
 def look_os():  # "look_os","просмотр информации об операционной системе"))
     return sys.platform
 
 def the_creator():  #cоздатель программы"))
     return 'Создатель программы - AlexCreo'
 
+def dir_save():  #"сохранить содержимое рабочей директории в файл"
+    with open('listdir.txt','w') as f:
+        print(look_pap())
+        if look_pap()!='None':
+            f.write('Dirs  : ')
+            f.write(", ".join(look_pap()))
+            f.write('\n')
+        if look_files()!='':
+            f.write('Files : ')
+            f.write(", ".join(look_files()))
+    print(look_pap())
+    print(look_files())
+    return
 
+
+if __name__ == '__main__':
+    dir_save()

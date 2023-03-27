@@ -1,0 +1,2 @@
+Dirs  : .git, .idea, .pytest_cache, folder_mk, venv, __pycache__
+Files : change_pa.py, invoice.txt, LICENSE, listdir.txt, main.py, my_invoice.py, oss.py, pokupki.json, test_filemanager.py, test_python.py, victory.py

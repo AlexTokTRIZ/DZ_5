@@ -16,6 +16,7 @@ baza.append(("the_creator","создатель программы"))
 baza.append(("play_vict","играть в викторину"))
 baza.append(("invoice","мой банковский счет"))
 baza.append(("change_pa","смена рабочей директории"))
+baza.append(("dir_save","сохранить содержимое рабочей директории в файл"))
 baza.append(("exit","выход"))
 
 y=True
