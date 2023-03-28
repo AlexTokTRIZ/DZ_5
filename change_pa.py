@@ -1,10 +1,17 @@
 import os
 def path_exist(path):
-    if os.path.exists(path):
+    # if os.path.exists(path):
+    #     os.chdir(path)
+    #     print('Теперь рабочая директория такая: ',path)
+    # else:
+    #     print('Такой директории не существует: ',path)
+    try:
+    #     # Тот код который может вызвать исключение
         os.chdir(path)
-        print('Теперь рабочая директория такая: ',path)
-    else:
+    except:
         print('Такой директории не существует: ',path)
+    else:
+        print('Теперь рабочая директория такая: ',path)
 
 def compare_recurs(spis1,spis2,i):   # рекурсивная функция поиска пересечения списков.
         #print(spis1,spis2,i)
@@ -38,7 +45,6 @@ def dirpath_recurs(path):   # функция разделения пути на 
 def change_pa():  # "смена рабочей директории"))
     pa = input('Ведите имя новой рабочей директории: ')
     other_path= pa.replace('\\', '/').split('/') # приведение слэшей к одному виду
-    #print(pa)
     dirpath, filename = os.path.split(os.getcwd())
     if pa.find('/')==-1 or pa.find('\\')==-1:  #если нет / то значит имя дирректории не содержит пути
         path_exist(os.path.join(dirpath, pa))
@@ -50,9 +56,7 @@ def change_pa():  # "смена рабочей директории"))
         path = os.getcwd()
         my_path = dirpath_recurs(path)  #
         my_path.reverse()  # разворот списка, так как он дополнялся с конца
-        #print(my_path)
         work_path = '\\'.join(my_path)  # превращение списка в путь
-        #print(work_path)
         i = len(my_path) - 1
         compare_recurs(my_path, other_path, i)
 

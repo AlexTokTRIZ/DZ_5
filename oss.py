@@ -2,16 +2,15 @@ import os
 import sys
 import shutil
 
-def create_pa():
-    print("*"*10)
-    pa=input('Ведите имя создаваемой папки: ')
-    if not os.path.exists(pa):
-        os.mkdir(pa)
-    else:
-        print('Такая папка уже существует')
+from decor import add_separators
 
+@add_separators
+def create_pa():
+    pa=input('Ведите имя создаваемой папки: ')
+    os.mkdir(pa) if not os.path.exists(pa) else print('Такая папка уже существует')
+
+@add_separators
 def delete_pa():
-    print("*"*10)
     look_pa()
     pa=input('Введите имя удаляемой папки или файла: ')
     if os.path.exists(os.path.join(os.getcwd(),pa)):
@@ -21,10 +20,10 @@ def delete_pa():
             os.rmdir(os.path.join(os.getcwd(), pa))
     else:
         print('Такая папка не существует')
-
+@add_separators
 def look_pa(): #"просмотр содержимого рабочей директории"))
     print(os.listdir(os.getcwd()))
-
+@add_separators
 def copy_pa(): # "copy_pa", "копировать (файл/папку)"))
     look_pa()
     pa=input('Ведите имя копируемой папки или файла: ')
@@ -36,24 +35,25 @@ def copy_pa(): # "copy_pa", "копировать (файл/папку)"))
             shutil.copytree(os.path.join(os.getcwd(), pa), pa_new)
     else:
         print('Такая папка не существует')
-
+@add_separators
 def look_pap():
     my_dirs=[]
     for i in os.listdir(os.getcwd()):
             if os.path.isdir(os.path.join(os.getcwd(),i)):
                 my_dirs.append(os.path.join(i))
-    return my_dirs
+    print(my_dirs)
+@add_separators
 def look_files(): # "look_files","посмотреть только файлы"))
     my_files=[]
     for i in os.listdir(os.getcwd()):
-            if not os.path.isdir(os.path.join(os.getcwd(),i)):
-                my_files.append(os.path.join(i))
-    return my_files
+             if not os.path.isdir(os.path.join(os.getcwd(),i)):
+                 my_files.append(os.path.join(i))
+    print(my_files)
 def look_os():  # "look_os","просмотр информации об операционной системе"))
-    return sys.platform
+    print(sys.platform)
 
 def the_creator():  #cоздатель программы"))
-    return 'Создатель программы - AlexCreo'
+    print('Создатель программы - AlexCreo')
 
 def dir_save():  #"сохранить содержимое рабочей директории в файл"
     with open('listdir.txt','w') as f:
